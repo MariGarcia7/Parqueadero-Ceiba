@@ -1,31 +1,34 @@
-package com.ceiba.parqueadero.service;
+package com.ceiba.parqueadero.dominio;
 
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import com.ceiba.parqueadero.dominio.AdministracionParqueadero;
+
 import com.ceiba.parqueadero.exception.ParqueaderoException;
 import com.ceiba.parqueadero.modelo.EntityVehiculo;
 import com.ceiba.parqueadero.modelo.TipoVehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 
-public class VigilanteService {
+public class Vigilante {
 
 	@Autowired
 	private IVehiculoRepository vehiculoReporsitory;
+	
+	private void validarDia(EntityVehiculo vehiculo) {
+		if (vehiculo.tipoVehiculo == TipoVehiculo.Carro) {
+			LocalDateTime fechaActual = LocalDateTime.now();
+			String dia = fechaActual.getDayOfWeek().toString();
+			if (AdministracionParqueadero.LUNES.equals(dia) || AdministracionParqueadero.DOMINGO.equals(dia) ) {
+				new ParqueaderoException("No esta autorizado para ingresar");
+			}
+		}
+	}
 
 	public void almacenarVehiculo(EntityVehiculo vehiculo) {
 		vehiculoReporsitory.save(vehiculo);
 	}
 	 
-	private void validarDia(EntityVehiculo vehiculo) {
-		if (vehiculo.tipoVehiculo == TipoVehiculo.Carro) {
-			String dia = vehiculo.getFechaHoraIngreso().getDayOfWeek().toString();
-			if (AdministracionParqueadero.LUNES.equals(dia) || AdministracionParqueadero.DOMINGO == dia ) {
-				new ParqueaderoException("No esta autorizado para ingresar");
-			}
-		}
-	}
+	
 	
 
 	private boolean validarCupo(EntityVehiculo vehiculo, long totalVehiculos) {
@@ -51,13 +54,4 @@ public class VigilanteService {
 			new ParqueaderoException(AdministracionParqueadero.NO_HAY_CUPO);
 		}
 	}
-
-	public void retirarVehiculos() {
-
-	}
-
-	public void consultarInfoVehiculos() {
-
-	}
-
 }
