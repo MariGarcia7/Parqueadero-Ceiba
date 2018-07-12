@@ -1,4 +1,4 @@
-package com.ceiba.parqueadero;
+package com.ceiba.parqueadero.pruebasunitarias;
 
 import static org.junit.Assert.assertEquals;
 

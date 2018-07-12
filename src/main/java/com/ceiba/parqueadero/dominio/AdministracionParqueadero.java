@@ -15,8 +15,8 @@ public class AdministracionParqueadero {
 	public static final int FIN_DIA = 24;
 	public static final String LUNES = "MONDAY";
 	public static final String DOMINGO = "SUNDAY";
-	public static final String NO_HAY_CUPO = "No hay cupo";
-
+	public static final String NO_HAY_CUPO = "No hay cupo disponible";
+	public static final String NO_AUTORIZADO = "No esta autorizado a ingresar:Placas que inician por la letra A solo pueden ingresar al parqueadero los días Domingo y Lunes";
 	private AdministracionParqueadero() {
 
 	}

@@ -28,7 +28,9 @@ public class TotalaPagar {
 //					.multiply(AdministracionParqueadero.VALOR_HORA_MOTO);
 //
 //		}
-
+/*if (vehiculo.getCilindraje()>AdministracionParqueadero.CILINDRAJE_MOTOS) {
+			
+		}*/
 	}
 
 }
