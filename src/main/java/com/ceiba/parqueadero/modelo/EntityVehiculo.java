@@ -90,6 +90,23 @@ public class EntityVehiculo {
 	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
+
+	public EntityVehiculo(int id, String placa, int cilindraje, LocalDateTime fechaHoraIngreso,
+			LocalDateTime fechaHoraSalida, BigDecimal totalPagar, TipoVehiculo tipoVehiculo) {
+		super();
+		this.id = id;
+		this.placa = placa;
+		this.cilindraje = cilindraje;
+		this.fechaHoraIngreso = fechaHoraIngreso;
+		this.fechaHoraSalida = fechaHoraSalida;
+		this.totalPagar = totalPagar;
+		this.tipoVehiculo = tipoVehiculo;
+	}
+	
+	public EntityVehiculo() {
+		
+	}
+	
 	
 	
 }

@@ -8,25 +8,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.ceiba.parqueadero.dominio.ValidacionesParaIngresarVehiculo;
 import com.ceiba.parqueadero.modelo.EntityVehiculo;
-import com.ceiba.parqueadero.service.IVehiculoService;
+import com.ceiba.parqueadero.service.IValidacionesParaIngreso;
 import com.ceiba.parqueadero.service.IVigilanteService;
 
 @RestController
 public class VehiculoController {
 
 	@Autowired
-	private IVehiculoService vehiculoService;
-
-	@Autowired
 	private IVigilanteService vigilanteService;
 
+	
 	@RequestMapping(value = "/vehiculo", method = RequestMethod.POST)
 	public ResponseEntity<EntityVehiculo> ingresarVehiculo(@RequestBody EntityVehiculo vehiculo) {
-		ValidacionesParaIngresarVehiculo vigilante = new ValidacionesParaIngresarVehiculo(vigilanteService, vehiculoService);
-		return new ResponseEntity<EntityVehiculo>(vigilante.ingresarVehiculos(vehiculo), HttpStatus.OK);
+		return new ResponseEntity<EntityVehiculo>(vigilanteService.ingresarVehiculo(vehiculo), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/vehiculo", method = RequestMethod.PUT)

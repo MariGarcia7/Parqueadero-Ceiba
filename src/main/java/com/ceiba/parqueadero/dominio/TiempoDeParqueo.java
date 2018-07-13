@@ -9,41 +9,15 @@ public class TiempoDeParqueo {
 	TiempoTotalDeParqueo calcularTiempoTotal(LocalDateTime fechaHoraIngreso, LocalDateTime fechaHoraSalida) {
 
 		TiempoTotalDeParqueo tiempoTotal = new TiempoTotalDeParqueo();
-		
-		tiempoTotal.dia= calcularDias(fechaHoraIngreso, fechaHoraSalida);
-		tiempoTotal.hora= calcularHoras(fechaHoraIngreso, fechaHoraSalida);
-		tiempoTotal.minutos = calcularDias(fechaHoraIngreso, fechaHoraSalida);
-		
+
+		Duration duration = Duration.between(fechaHoraIngreso, fechaHoraSalida);
+		tiempoTotal.dia = duration.toDays();
+		duration = duration.minusDays(tiempoTotal.dia);
+		tiempoTotal.hora = duration.toHours();
+		duration = duration.minusHours(tiempoTotal.hora);
+		tiempoTotal.minutos = duration.toMinutes();
+
 		return tiempoTotal;
-	}
-
-	public long calcularDias(LocalDateTime fechaHoraIngreso, LocalDateTime fechaHoraSalida) {
-
-		Duration duration = Duration.between(fechaHoraIngreso, fechaHoraSalida);
-		return duration.toDays();
-
-	}
-
-	public long calcularHoras(LocalDateTime fechaHoraIngreso, LocalDateTime fechaHoraSalida) {
-
-		Duration duration = Duration.between(fechaHoraIngreso, fechaHoraSalida);
-
-		long days = duration.toDays();
-		duration = duration.minusDays(days);
-
-		return duration.toHours();
-	}
-
-	public long calcularMinutos(LocalDateTime fechaHoraIngreso, LocalDateTime fechaHoraSalida) {
-
-		Duration duration = Duration.between(fechaHoraIngreso, fechaHoraSalida);
-
-		long days = duration.toDays();
-		duration = duration.minusDays(days);
-		long hours = duration.toHours();
-		duration = duration.minusHours(hours);
-
-		return duration.toMinutes();
 	}
 
 }
