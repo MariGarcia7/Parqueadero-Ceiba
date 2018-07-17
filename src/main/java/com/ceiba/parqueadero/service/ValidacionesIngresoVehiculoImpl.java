@@ -32,10 +32,8 @@ public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehi
 	@Override
 	public boolean validarLetraInicialPlacaYDia(EntityVehiculo vehiculo) {
 
-		System.out.println(vehiculo.getPlaca().charAt(0));
 		if (vehiculo.getPlaca().charAt(0) == ConstantesRestriccionesParqueadero.INICIAL_PLACA) {
 			String dia = vehiculo.getFechaHoraIngreso().getDayOfWeek().toString();
-			System.out.println(dia);
 			if ((ConstantesRestriccionesParqueadero.LUNES.equals(dia) || ConstantesRestriccionesParqueadero.DOMINGO.equals(dia))) {
 				return true;
 			}
