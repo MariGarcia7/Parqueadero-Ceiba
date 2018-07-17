@@ -47,7 +47,7 @@ public class ValidacionesTest {
 	public void validarLetraInicialPlacaYDia() {
 		
 		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 16, 14, 25), null, null, TipoVehiculo.MOTO);
-		assertEquals(true, validaciones.validarLetraInicialPlacaYDia(vehiculo));
+		assertEquals(false, validaciones.validarLetraInicialPlacaYDia(vehiculo));
 		
 	}
 
