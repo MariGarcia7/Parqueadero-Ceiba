@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ceiba.parqueadero.modelo.EntityVehiculo;
-import com.ceiba.parqueadero.service.IValidacionesParaIngreso;
+import com.ceiba.parqueadero.model.EntityVehiculo;
 import com.ceiba.parqueadero.service.IVigilanteService;
 
 @RestController

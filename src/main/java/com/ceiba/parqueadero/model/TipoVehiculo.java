@@ -1,4 +1,4 @@
-package com.ceiba.parqueadero.modelo;
+package com.ceiba.parqueadero.model;
 
 public enum TipoVehiculo {
 	

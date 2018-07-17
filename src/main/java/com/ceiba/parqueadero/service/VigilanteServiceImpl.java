@@ -1,36 +1,44 @@
 package com.ceiba.parqueadero.service;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.ceiba.parqueadero.modelo.EntityVehiculo;
-import com.ceiba.parqueadero.modelo.TipoVehiculo;
+import com.ceiba.parqueadero.dominio.CalculadoraDeParqueadero;
+import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.TipoVehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 
 @Service
 public class VigilanteServiceImpl implements IVigilanteService {
 
 	@Autowired
-	@Qualifier("repositorio")
 	private IVehiculoRepository vehiculoReporsitory;
+
+	@Autowired
+	private ValidacionesIngresoVehiculoImpl validaciones;
 	
 	@Autowired
-	@Qualifier("validaingreso")
-	private ValidacionesParaIngresoImpl validaciones;
+	private ValidacionesRetiroVehiculoImpl validacionesRetiro;
 
 	@Override
 	public EntityVehiculo ingresarVehiculo(EntityVehiculo vehiculo) {
-		validaciones.
+		validaciones.aceptarIngresoVehiculo(vehiculo);
+		vehiculo.setFechaHoraIngreso(LocalDateTime.now());
 		return vehiculoReporsitory.save(vehiculo);
 	}
 
 	@Override
 	public EntityVehiculo retirarVehiculo(EntityVehiculo vehiculo) {
-		
-		return vehiculoReporsitory.saveAndFlush(vehiculo);
+		EntityVehiculo vehiculoRegistrado = validacionesRetiro.aceptarRetiroVehiculo(vehiculo);
+		vehiculoRegistrado.setFechaHoraSalida(LocalDateTime.now());
+		CalculadoraDeParqueadero totalaPagar = new CalculadoraDeParqueadero();
+		BigDecimal total = totalaPagar.calcularTotalaPagar(vehiculoRegistrado);
+		vehiculoRegistrado.setTotalPagar(total);
+		return vehiculoReporsitory.saveAndFlush(vehiculoRegistrado);
 	}
 
 	@Override

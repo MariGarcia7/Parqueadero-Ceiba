@@ -2,11 +2,11 @@ package com.ceiba.parqueadero.dominio;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import com.ceiba.parqueadero.modelo.TiempoTotalDeParqueo;
+import com.ceiba.parqueadero.model.TiempoTotalDeParqueo;
 
-public class TiempoDeParqueo {
+public class DiasHorasMinutosDeParqueo {
 
-	TiempoTotalDeParqueo calcularTiempoTotal(LocalDateTime fechaHoraIngreso, LocalDateTime fechaHoraSalida) {
+	public TiempoTotalDeParqueo calcularTiempoTotal(LocalDateTime fechaHoraIngreso, LocalDateTime fechaHoraSalida) {
 
 		TiempoTotalDeParqueo tiempoTotal = new TiempoTotalDeParqueo();
 

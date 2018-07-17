@@ -1,6 +1,6 @@
-package com.ceiba.parqueadero.exception;
+package com.ceiba.parqueadero.dominio;
 
-public class ParqueaderoException extends Exception {
+public class ParqueaderoException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

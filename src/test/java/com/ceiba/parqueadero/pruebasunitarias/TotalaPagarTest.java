@@ -4,41 +4,64 @@ import static org.junit.Assert.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
-
 import org.junit.Test;
-import com.ceiba.parqueadero.dominio.TotalaPagar;
-import com.ceiba.parqueadero.modelo.TipoVehiculo;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import com.ceiba.parqueadero.dominio.CalculadoraDeParqueadero;
+import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.TipoVehiculo;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TotalaPagarTest {
 
 	@Test
 	public void totalaPagarHoraMotoTest() {
-		
-		TotalaPagar totalPagarMoto = new TotalaPagar();
-		BigDecimal totalaPagarMoto=totalPagarMoto.calcularTotalaPagar(TipoVehiculo.Moto, 0, (LocalDateTime.of(2018, Month.JULY, 9, 7, 20)), LocalDateTime.of(2018, Month.JULY, 9, 8, 25));
-		BigDecimal valor=new BigDecimal(1000);
+
+		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
+				LocalDateTime.of(2018, Month.JULY, 9, 8, 25), null, TipoVehiculo.Moto);
+		CalculadoraDeParqueadero totalPagarMoto = new CalculadoraDeParqueadero();
+		BigDecimal totalaPagarMoto = totalPagarMoto.calcularTotalaPagar(vehiculo);
+		BigDecimal valor = new BigDecimal(1000);
 		assertEquals((valor), totalaPagarMoto);
-		
+
 	}
-	
+
 	@Test
 	public void totalaPagarMotoConCilindrajeMayorTest() {
-		
-		TotalaPagar totalPagarMoto = new TotalaPagar();
-		BigDecimal totalaPagarMoto=totalPagarMoto.calcularTotalaPagar(TipoVehiculo.Moto, 650, (LocalDateTime.of(2018, Month.JULY, 9, 7, 20)), LocalDateTime.of(2018, Month.JULY, 9, 17, 20));
-		BigDecimal valor=new BigDecimal(6000);
+
+		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
+				LocalDateTime.of(2018, Month.JULY, 9, 17, 20), null, TipoVehiculo.Moto);
+		CalculadoraDeParqueadero totalPagarMoto = new CalculadoraDeParqueadero();
+		BigDecimal totalaPagarMoto = totalPagarMoto.calcularTotalaPagar(vehiculo);
+		BigDecimal valor = new BigDecimal(6000);
 		assertEquals((valor), totalaPagarMoto);
-		
+
 	}
-	
+
+	@Test
+	public void totalaPagarHoraCarroTest() {
+
+		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 16, 14, 25),
+				LocalDateTime.of(2018, Month.JULY, 16, 20, 45), null, TipoVehiculo.Carro);
+		CalculadoraDeParqueadero totalPagarCarro = new CalculadoraDeParqueadero();
+		BigDecimal totalaPagarCarro = totalPagarCarro.calcularTotalaPagar(vehiculo);
+		BigDecimal valor = new BigDecimal(7000);
+		assertEquals((valor), totalaPagarCarro);
+
+	}
+
 	@Test
 	public void totalaPagarDiaCarroTest() {
-		
-		TotalaPagar totalPagarMoto = new TotalaPagar();
-		BigDecimal totalaPagarMoto=totalPagarMoto.calcularTotalaPagar(TipoVehiculo.Carro, 0, (LocalDateTime.of(2018, Month.JULY, 9, 7, 20)), LocalDateTime.of(2018, Month.JULY, 10, 9, 25));
-		BigDecimal valor=new BigDecimal(11000);
-		assertEquals((valor), totalaPagarMoto);
-		
+
+		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 14, 19, 00),
+				LocalDateTime.of(2018, Month.JULY, 16, 11, 49), null, TipoVehiculo.Carro);
+		CalculadoraDeParqueadero totalPagarCarro = new CalculadoraDeParqueadero();
+		BigDecimal totalaPagarCarro = totalPagarCarro.calcularTotalaPagar(vehiculo);
+		BigDecimal valor = new BigDecimal(17000);
+		assertEquals((valor), totalaPagarCarro);
+
 	}
 
 }

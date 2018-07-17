@@ -1,8 +1,9 @@
 package com.ceiba.parqueadero.service;
 
 import java.util.List;
-import com.ceiba.parqueadero.modelo.EntityVehiculo;
-import com.ceiba.parqueadero.modelo.TipoVehiculo;
+
+import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.TipoVehiculo;
 
 public interface IVigilanteService {
 	
