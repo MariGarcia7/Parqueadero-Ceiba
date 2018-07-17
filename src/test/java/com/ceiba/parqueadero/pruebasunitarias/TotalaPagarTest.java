@@ -20,7 +20,7 @@ public class TotalaPagarTest {
 	public void totalaPagarHoraMotoTest() {
 
 		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
-				LocalDateTime.of(2018, Month.JULY, 9, 8, 25), null, TipoVehiculo.Moto);
+				LocalDateTime.of(2018, Month.JULY, 9, 8, 25), null, TipoVehiculo.MOTO);
 		CalculadoraDeParqueadero totalPagarMoto = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarMoto = totalPagarMoto.calcularTotalaPagar(vehiculo);
 		BigDecimal valor = new BigDecimal(1000);
@@ -32,7 +32,7 @@ public class TotalaPagarTest {
 	public void totalaPagarMotoConCilindrajeMayorTest() {
 
 		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
-				LocalDateTime.of(2018, Month.JULY, 9, 17, 20), null, TipoVehiculo.Moto);
+				LocalDateTime.of(2018, Month.JULY, 9, 17, 20), null, TipoVehiculo.MOTO);
 		CalculadoraDeParqueadero totalPagarMoto = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarMoto = totalPagarMoto.calcularTotalaPagar(vehiculo);
 		BigDecimal valor = new BigDecimal(6000);
@@ -44,7 +44,7 @@ public class TotalaPagarTest {
 	public void totalaPagarHoraCarroTest() {
 
 		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 16, 14, 25),
-				LocalDateTime.of(2018, Month.JULY, 16, 20, 45), null, TipoVehiculo.Carro);
+				LocalDateTime.of(2018, Month.JULY, 16, 20, 45), null, TipoVehiculo.CARRO);
 		CalculadoraDeParqueadero totalPagarCarro = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarCarro = totalPagarCarro.calcularTotalaPagar(vehiculo);
 		BigDecimal valor = new BigDecimal(7000);
@@ -56,7 +56,7 @@ public class TotalaPagarTest {
 	public void totalaPagarDiaCarroTest() {
 
 		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 14, 19, 00),
-				LocalDateTime.of(2018, Month.JULY, 16, 11, 49), null, TipoVehiculo.Carro);
+				LocalDateTime.of(2018, Month.JULY, 16, 11, 49), null, TipoVehiculo.CARRO);
 		CalculadoraDeParqueadero totalPagarCarro = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarCarro = totalPagarCarro.calcularTotalaPagar(vehiculo);
 		BigDecimal valor = new BigDecimal(17000);

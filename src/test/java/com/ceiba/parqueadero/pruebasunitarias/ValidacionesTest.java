@@ -37,8 +37,8 @@ public class ValidacionesTest {
 	@Test
 	public void validarCuposParqueaderoMotosTest() {
 		
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, null, null, null, TipoVehiculo.Moto);
-		Mockito.when(vehiculoRepository.contarTipoVehiculo(TipoVehiculo.Moto)).thenReturn(10l);
+		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, null, null, null, TipoVehiculo.MOTO);
+		Mockito.when(vehiculoRepository.contarTipoVehiculo(TipoVehiculo.MOTO)).thenReturn(10l);
 		assertEquals(false, validaciones.validarCuposParqueadero(vehiculo));
 		
 	}
@@ -46,7 +46,7 @@ public class ValidacionesTest {
 	@Test
 	public void validarLetraInicialPlacaYDia() {
 		
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 16, 14, 25), null, null, TipoVehiculo.Moto);
+		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 16, 14, 25), null, null, TipoVehiculo.MOTO);
 		assertEquals(true, validaciones.validarLetraInicialPlacaYDia(vehiculo));
 		
 	}

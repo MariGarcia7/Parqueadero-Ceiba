@@ -17,7 +17,7 @@ public class CalculadoraDeParqueadero {
 		TiempoTotalDeParqueo tiempo = tiempoDeParqueo.calcularTiempoTotal(entityVehiculo.getFechaHoraIngreso(),
 				entityVehiculo.getFechaHoraSalida());
 
-		if (entityVehiculo.getTipoVehiculo().equals(TipoVehiculo.Moto)) {
+		if (entityVehiculo.getTipoVehiculo().equals(TipoVehiculo.MOTO)) {
 			valordia = ConstantesTarifasParqueadero.VALOR_DIA_MOTO;
 			valorhora = ConstantesTarifasParqueadero.VALOR_HORA_MOTO;
 		} else {
@@ -27,7 +27,6 @@ public class CalculadoraDeParqueadero {
 
 		BigDecimal hora;
 		BigDecimal minutos = BigDecimal.ZERO;
-		BigDecimal totalaPagar;
 
 		BigDecimal dia = new BigDecimal(tiempo.dia).multiply(valordia);
 
@@ -41,11 +40,11 @@ public class CalculadoraDeParqueadero {
 			minutos = valorhora;
 		}
 
-		if (entityVehiculo.getTipoVehiculo().equals(TipoVehiculo.Moto)
+		if (entityVehiculo.getTipoVehiculo().equals(TipoVehiculo.MOTO)
 				&& entityVehiculo.getCilindraje() >= ConstantesRestriccionesParqueadero.CILINDRAJE_MOTO) {
-			return totalaPagar = dia.add(hora).add(minutos).add(ConstantesTarifasParqueadero.VALOR_ADICIONAL_CILINDRAJE_MOTO);
+			return dia.add(hora).add(minutos).add(ConstantesTarifasParqueadero.VALOR_ADICIONAL_CILINDRAJE_MOTO);
 		} else {
-			return totalaPagar = dia.add(hora).add(minutos);
+			return dia.add(hora).add(minutos);
 		}
 		
 

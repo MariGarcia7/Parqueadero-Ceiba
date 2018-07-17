@@ -10,7 +10,7 @@ import com.ceiba.parqueadero.model.EntityVehiculo;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 
-@Service("validaingreso")
+@Service
 public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehiculo {
 
 	@Autowired
@@ -48,7 +48,7 @@ public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehi
 
 		long totalVehiculos = vehiculoReporsitory.contarTipoVehiculo(vehiculo.tipoVehiculo);
 
-		if (vehiculo.tipoVehiculo == TipoVehiculo.Carro) {
+		if (vehiculo.tipoVehiculo == TipoVehiculo.CARRO) {
 			return totalVehiculos < ConstantesCuposParqueadero.CUPOS_CARROS;
 		} else {
 			return totalVehiculos < ConstantesCuposParqueadero.CUPOS_MOTOS;
