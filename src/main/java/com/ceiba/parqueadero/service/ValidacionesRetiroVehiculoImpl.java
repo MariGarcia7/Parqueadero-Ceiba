@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ceiba.parqueadero.dominio.ConstantesMensajesExcepcion;
 import com.ceiba.parqueadero.dominio.ParqueaderoException;
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 
 @Service
@@ -15,9 +15,9 @@ public class ValidacionesRetiroVehiculoImpl implements IValidacionesRetiroVehicu
 	private IVehiculoRepository vehiculoReporsitory;
 	
 	@Override
-	public EntityVehiculo aceptarRetiroVehiculo(EntityVehiculo vehiculo) {
+	public Vehiculo aceptarRetiroVehiculo(Vehiculo vehiculo) {
 
-		EntityVehiculo vehiculoRegistrado = vehiculoReporsitory.validarSiVehiculoEstaRegistrado(vehiculo.getPlaca());
+		Vehiculo vehiculoRegistrado = vehiculoReporsitory.validarSiVehiculoEstaRegistrado(vehiculo.getPlaca());
 
 		if (vehiculoRegistrado == null) {
 

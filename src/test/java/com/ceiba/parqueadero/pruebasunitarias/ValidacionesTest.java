@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 import com.ceiba.parqueadero.service.IValidacionesIngresoVehiculo;
@@ -37,7 +37,7 @@ public class ValidacionesTest {
 	@Test
 	public void validarCuposParqueaderoMotosTest() {
 		
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, null, null, null, TipoVehiculo.MOTO);
+		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 0, null, null, null, TipoVehiculo.MOTO);
 		Mockito.when(vehiculoRepository.contarTipoVehiculo(TipoVehiculo.MOTO)).thenReturn(10l);
 		assertEquals(false, validaciones.validarCuposParqueadero(vehiculo));
 		
@@ -46,7 +46,7 @@ public class ValidacionesTest {
 	@Test
 	public void validarLetraInicialPlacaYDia() {
 		
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 16, 14, 25), null, null, TipoVehiculo.MOTO);
+		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 16, 14, 25), null, null, TipoVehiculo.MOTO);
 		assertEquals(false, validaciones.validarLetraInicialPlacaYDia(vehiculo));
 		
 	}

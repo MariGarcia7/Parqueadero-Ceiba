@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ceiba.parqueadero.dominio.CalculadoraDeParqueadero;
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 
@@ -25,15 +25,15 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	private ValidacionesRetiroVehiculoImpl validacionesRetiro;
 
 	@Override
-	public EntityVehiculo ingresarVehiculo(EntityVehiculo vehiculo) {
+	public Vehiculo ingresarVehiculo(Vehiculo vehiculo) {
 		validaciones.aceptarIngresoVehiculo(vehiculo);
 		vehiculo.setFechaHoraIngreso(LocalDateTime.now());
 		return vehiculoReporsitory.save(vehiculo);
 	}
 
 	@Override
-	public EntityVehiculo retirarVehiculo(EntityVehiculo vehiculo) {
-		EntityVehiculo vehiculoRegistrado = validacionesRetiro.aceptarRetiroVehiculo(vehiculo);
+	public Vehiculo retirarVehiculo(Vehiculo vehiculo) {
+		Vehiculo vehiculoRegistrado = validacionesRetiro.aceptarRetiroVehiculo(vehiculo);
 		vehiculoRegistrado.setFechaHoraSalida(LocalDateTime.now());
 		CalculadoraDeParqueadero totalaPagar = new CalculadoraDeParqueadero();
 		BigDecimal total = totalaPagar.calcularTotalaPagar(vehiculoRegistrado);
@@ -42,13 +42,13 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	}
 
 	@Override
-	public List<EntityVehiculo> consultarVehiculo() {
+	public List<Vehiculo> consultarVehiculo() {
 
 		return vehiculoReporsitory.findAll();
 	}
 
 	@Override
-	public EntityVehiculo findByPlaca(String placa) {
+	public Vehiculo findByPlaca(String placa) {
 
 		return null;
 	}

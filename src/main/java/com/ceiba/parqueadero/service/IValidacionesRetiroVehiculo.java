@@ -1,9 +1,9 @@
 package com.ceiba.parqueadero.service;
 
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 
 public interface IValidacionesRetiroVehiculo {
 	
-	public EntityVehiculo aceptarRetiroVehiculo(EntityVehiculo vehiculo);
+	public Vehiculo aceptarRetiroVehiculo(Vehiculo vehiculo);
 
 }

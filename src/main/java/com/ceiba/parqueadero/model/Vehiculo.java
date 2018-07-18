@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class EntityVehiculo {
+public class Vehiculo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -88,7 +88,7 @@ public class EntityVehiculo {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 
-	public EntityVehiculo(int id, String placa, int cilindraje, LocalDateTime fechaHoraIngreso,
+	public Vehiculo(int id, String placa, int cilindraje, LocalDateTime fechaHoraIngreso,
 			LocalDateTime fechaHoraSalida, BigDecimal totalPagar, TipoVehiculo tipoVehiculo) {
 		super();
 		this.id = id;
@@ -100,7 +100,7 @@ public class EntityVehiculo {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 	
-	public EntityVehiculo() {
+	public Vehiculo() {
 		
 	}
 	

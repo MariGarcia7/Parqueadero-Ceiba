@@ -1,13 +1,13 @@
 package com.ceiba.parqueadero.dominio;
 
 import java.math.BigDecimal;
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.model.TiempoTotalDeParqueo;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 
 public class CalculadoraDeParqueadero {
 
-	public BigDecimal calcularTotalaPagar(EntityVehiculo entityVehiculo) {
+	public BigDecimal calcularTotalaPagar(Vehiculo entityVehiculo) {
 
 		BigDecimal valordia;
 		BigDecimal valorhora;
@@ -25,6 +25,14 @@ public class CalculadoraDeParqueadero {
 			valorhora = ConstantesTarifasParqueadero.VALOR_HORA_CARRO;
 		}
 
+		return calcularValorTotalaPagar(entityVehiculo, valordia, valorhora, tiempo);
+		
+
+	}
+
+	public BigDecimal calcularValorTotalaPagar(Vehiculo entityVehiculo, BigDecimal valordia, BigDecimal valorhora,
+			TiempoTotalDeParqueo tiempo) {
+		
 		BigDecimal hora;
 		BigDecimal minutos = BigDecimal.ZERO;
 
@@ -46,8 +54,6 @@ public class CalculadoraDeParqueadero {
 		} else {
 			return dia.add(hora).add(minutos);
 		}
-		
-
 	}
 
 }

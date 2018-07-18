@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.ceiba.parqueadero.dominio.CalculadoraDeParqueadero;
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 
 @RunWith(SpringRunner.class)
@@ -19,7 +19,7 @@ public class TotalaPagarTest {
 	@Test
 	public void totalaPagarHoraMotoTest() {
 
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
+		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 0, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
 				LocalDateTime.of(2018, Month.JULY, 9, 8, 25), null, TipoVehiculo.MOTO);
 		CalculadoraDeParqueadero totalPagarMoto = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarMoto = totalPagarMoto.calcularTotalaPagar(vehiculo);
@@ -31,7 +31,7 @@ public class TotalaPagarTest {
 	@Test
 	public void totalaPagarMotoConCilindrajeMayorTest() {
 
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
+		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 9, 7, 20),
 				LocalDateTime.of(2018, Month.JULY, 9, 17, 20), null, TipoVehiculo.MOTO);
 		CalculadoraDeParqueadero totalPagarMoto = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarMoto = totalPagarMoto.calcularTotalaPagar(vehiculo);
@@ -43,7 +43,7 @@ public class TotalaPagarTest {
 	@Test
 	public void totalaPagarHoraCarroTest() {
 
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 16, 14, 25),
+		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 16, 14, 25),
 				LocalDateTime.of(2018, Month.JULY, 16, 20, 45), null, TipoVehiculo.CARRO);
 		CalculadoraDeParqueadero totalPagarCarro = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarCarro = totalPagarCarro.calcularTotalaPagar(vehiculo);
@@ -55,7 +55,7 @@ public class TotalaPagarTest {
 	@Test
 	public void totalaPagarDiaCarroTest() {
 
-		EntityVehiculo vehiculo = new EntityVehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 14, 19, 00),
+		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 650, LocalDateTime.of(2018, Month.JULY, 14, 19, 00),
 				LocalDateTime.of(2018, Month.JULY, 16, 11, 49), null, TipoVehiculo.CARRO);
 		CalculadoraDeParqueadero totalPagarCarro = new CalculadoraDeParqueadero();
 		BigDecimal totalaPagarCarro = totalPagarCarro.calcularTotalaPagar(vehiculo);

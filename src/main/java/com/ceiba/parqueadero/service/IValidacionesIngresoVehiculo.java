@@ -1,13 +1,13 @@
 package com.ceiba.parqueadero.service;
 
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 
 public interface IValidacionesIngresoVehiculo {
 	
-	public boolean validarLetraInicialPlacaYDia(EntityVehiculo vehiculo);
-	public boolean validarCuposParqueadero(EntityVehiculo vehiculo);
-	public boolean validarCamposRequeridos(EntityVehiculo vehiculo);
-	public boolean validarSiVehiculoEstaRegistrado(EntityVehiculo vehiculo);
-	public void aceptarIngresoVehiculo(EntityVehiculo vehiculo);
+	public boolean validarLetraInicialPlacaYDia(Vehiculo vehiculo);
+	public boolean validarCuposParqueadero(Vehiculo vehiculo);
+	public boolean validarCamposRequeridos(Vehiculo vehiculo);
+	public boolean validarSiVehiculoEstaRegistrado(Vehiculo vehiculo);
+	public void aceptarIngresoVehiculo(Vehiculo vehiculo);
 	
 }

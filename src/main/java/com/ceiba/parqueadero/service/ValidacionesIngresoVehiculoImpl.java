@@ -6,7 +6,7 @@ import com.ceiba.parqueadero.dominio.ConstantesRestriccionesParqueadero;
 import com.ceiba.parqueadero.dominio.ConstantesCuposParqueadero;
 import com.ceiba.parqueadero.dominio.ConstantesMensajesExcepcion;
 import com.ceiba.parqueadero.dominio.ParqueaderoException;
-import com.ceiba.parqueadero.model.EntityVehiculo;
+import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 import com.ceiba.parqueadero.repository.IVehiculoRepository;
 
@@ -17,20 +17,20 @@ public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehi
 	private IVehiculoRepository vehiculoReporsitory;
 
 	@Override
-	public boolean validarCamposRequeridos(EntityVehiculo vehiculo) {
+	public boolean validarCamposRequeridos(Vehiculo vehiculo) {
 		return (vehiculo.getPlaca() == null || vehiculo.getPlaca().isEmpty());
 	}
 
 	@Override
-	public boolean validarSiVehiculoEstaRegistrado(EntityVehiculo vehiculo) {
+	public boolean validarSiVehiculoEstaRegistrado(Vehiculo vehiculo) {
 
-		EntityVehiculo vehiculoRegistrado = vehiculoReporsitory.validarSiVehiculoEstaRegistrado(vehiculo.getPlaca());
+		Vehiculo vehiculoRegistrado = vehiculoReporsitory.validarSiVehiculoEstaRegistrado(vehiculo.getPlaca());
 		return vehiculoRegistrado != null;
 
 	}
 
 	@Override
-	public boolean validarLetraInicialPlacaYDia(EntityVehiculo vehiculo) {
+	public boolean validarLetraInicialPlacaYDia(Vehiculo vehiculo) {
 
 		if (vehiculo.getPlaca().charAt(0) == ConstantesRestriccionesParqueadero.INICIAL_PLACA) {
 			String dia = vehiculo.getFechaHoraIngreso().getDayOfWeek().toString();
@@ -42,7 +42,7 @@ public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehi
 	}
 
 	@Override
-	public boolean validarCuposParqueadero(EntityVehiculo vehiculo) {
+	public boolean validarCuposParqueadero(Vehiculo vehiculo) {
 
 		long totalVehiculos = vehiculoReporsitory.contarTipoVehiculo(vehiculo.tipoVehiculo);
 
@@ -55,7 +55,7 @@ public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehi
 	}
 
 	@Override
-	public void aceptarIngresoVehiculo(EntityVehiculo vehiculo) {
+	public void aceptarIngresoVehiculo(Vehiculo vehiculo) {
 
 		if (validarCamposRequeridos(vehiculo)) {
 			throw new ParqueaderoException(ConstantesMensajesExcepcion.CAMPOS_NO_DILIGENCIADOS);
