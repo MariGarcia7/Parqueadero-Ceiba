@@ -32,8 +32,16 @@ public class VehiculoController {
 
 	@RequestMapping(value = "/vehiculo", method = RequestMethod.GET)
 	public ResponseEntity<List<Vehiculo>> listarVehiculos() {
-		return new ResponseEntity<List<Vehiculo>>(vigilanteService.consultarVehiculo(), HttpStatus.OK);
-
+		return new ResponseEntity<List<Vehiculo>>(vigilanteService.vehiculosEnParqueadero(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/vehiculo/historial", method = RequestMethod.GET)
+	public ResponseEntity<List<Vehiculo>> historialVehiculos() {
+		return new ResponseEntity<List<Vehiculo>>(vigilanteService.historialVehiculos(), HttpStatus.OK);
+	}
+	
+	
+	
+	
 
 }

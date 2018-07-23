@@ -11,11 +11,11 @@ public class DiasHorasMinutosDeParqueo {
 		TiempoTotalDeParqueo tiempoTotal = new TiempoTotalDeParqueo();
 
 		Duration duration = Duration.between(fechaHoraIngreso, fechaHoraSalida);
-		tiempoTotal.dia = duration.toDays();
-		duration = duration.minusDays(tiempoTotal.dia);
-		tiempoTotal.hora = duration.toHours();
-		duration = duration.minusHours(tiempoTotal.hora);
-		tiempoTotal.minutos = duration.toMinutes();
+		tiempoTotal.setDia(duration.toDays()); 
+		duration = duration.minusDays(tiempoTotal.getDia());
+		tiempoTotal.setHora(duration.toHours()); 
+		duration = duration.minusHours(tiempoTotal.getHora());
+		tiempoTotal.setMinutos(duration.toMinutes()); 
 
 		return tiempoTotal;
 	}

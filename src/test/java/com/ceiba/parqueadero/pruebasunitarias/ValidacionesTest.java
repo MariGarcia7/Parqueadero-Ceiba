@@ -33,6 +33,22 @@ public class ValidacionesTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
+	@Test
+	public void validarCamposRequeridosTest() {
+		
+		Vehiculo vehiculo = new Vehiculo(0, null, 0, null, null, null, null);
+		assertEquals(true, validaciones.validarCamposRequeridos(vehiculo));
+		
+	}
+	
+	@Test
+	public void validarSiVehiculoEstaRegistradoTest() {
+		
+		Vehiculo vehiculo = new Vehiculo(0, null, 0, null, null, null, null);
+		Mockito.when(vehiculoRepository);
+		assertEquals(true, validaciones.validarSiVehiculoEstaRegistrado(vehiculo));
+		
+	}
 	
 	@Test
 	public void validarCuposParqueaderoMotosTest() {

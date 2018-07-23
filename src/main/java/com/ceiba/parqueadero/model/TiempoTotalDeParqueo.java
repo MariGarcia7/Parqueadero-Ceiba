@@ -2,9 +2,9 @@ package com.ceiba.parqueadero.model;
 
 public class TiempoTotalDeParqueo {
 
-	public long dia;
-	public long hora;
-	public long minutos;
+	private long dia;
+	private long hora;
+	private long minutos;
 	
 	
 	public TiempoTotalDeParqueo() {

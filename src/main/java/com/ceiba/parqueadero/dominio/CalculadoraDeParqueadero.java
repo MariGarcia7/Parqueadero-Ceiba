@@ -36,15 +36,15 @@ public class CalculadoraDeParqueadero {
 		BigDecimal hora;
 		BigDecimal minutos = BigDecimal.ZERO;
 
-		BigDecimal dia = new BigDecimal(tiempo.dia).multiply(valordia);
+		BigDecimal dia = new BigDecimal(tiempo.getDia()).multiply(valordia);
 
-		if (tiempo.hora >= ConstantesRestriccionesParqueadero.INICIO_DIA) {
+		if (tiempo.getHora() >= ConstantesRestriccionesParqueadero.INICIO_DIA) {
 			hora = valordia;
 		} else {
-			hora = new BigDecimal(tiempo.hora).multiply(valorhora);
+			hora = new BigDecimal(tiempo.getHora()).multiply(valorhora);
 		}
 
-		if (tiempo.minutos > 0) {
+		if (tiempo.getMinutos() > 0) {
 			minutos = valorhora;
 		}
 

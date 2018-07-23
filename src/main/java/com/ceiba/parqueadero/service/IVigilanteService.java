@@ -9,7 +9,8 @@ public interface IVigilanteService {
 	
 	Vehiculo ingresarVehiculo(Vehiculo vehiculo);
 	Vehiculo retirarVehiculo(Vehiculo vehiculo);
-	List<Vehiculo> consultarVehiculo();
+	List<Vehiculo> vehiculosEnParqueadero();
+	List<Vehiculo> historialVehiculos();
 	Vehiculo findByPlaca(String placa);
 	long contarPorTipoVehiculo(TipoVehiculo tipovehiculo);
 

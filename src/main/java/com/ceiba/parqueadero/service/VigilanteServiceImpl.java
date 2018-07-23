@@ -42,9 +42,9 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	}
 
 	@Override
-	public List<Vehiculo> consultarVehiculo() {
+	public List<Vehiculo> vehiculosEnParqueadero() {
 
-		return vehiculoReporsitory.findAll();
+		return vehiculoReporsitory.vehiculoEnParqueadero();
 	}
 
 	@Override
@@ -56,6 +56,11 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	@Override
 	public long contarPorTipoVehiculo(TipoVehiculo tipovehiculo) {
 		return vehiculoReporsitory.contarTipoVehiculo(tipovehiculo);
+	}
+
+	@Override
+	public List<Vehiculo> historialVehiculos() {
+		return vehiculoReporsitory.historialVehiculos();
 	}
 
 }
