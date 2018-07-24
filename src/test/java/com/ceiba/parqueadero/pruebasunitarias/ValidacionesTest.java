@@ -55,7 +55,7 @@ public class ValidacionesTest {
 		
 		Vehiculo vehiculo = new Vehiculo(0, "EOT95E", 0, null, null, null, TipoVehiculo.MOTO);
 		Mockito.when(vehiculoRepository.contarTipoVehiculo(TipoVehiculo.MOTO)).thenReturn(10l);
-		assertEquals(false, validaciones.validarCuposParqueadero(vehiculo));
+		assertEquals(true, validaciones.validarCuposParqueadero(vehiculo));
 		
 	}
 	
