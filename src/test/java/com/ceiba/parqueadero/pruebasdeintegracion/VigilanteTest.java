@@ -5,10 +5,11 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import com.ceiba.parqueadero.ParqueaderoApplication;
 import com.ceiba.parqueadero.model.TipoVehiculo;
 import com.ceiba.parqueadero.model.Vehiculo;
@@ -19,6 +20,7 @@ import com.ceiba.parqueadero.service.VigilanteServiceImpl;
 @SpringBootTest(classes=ParqueaderoApplication.class)
 @Transactional
 @Rollback(value=true)
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class VigilanteTest {
 
 	@Autowired

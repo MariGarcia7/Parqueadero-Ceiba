@@ -14,7 +14,7 @@ import com.ceiba.parqueadero.model.Vehiculo;
 @Repository("repositorio")
 public interface IVehiculoRepository extends JpaRepository<Vehiculo, Long> {
 	
-	@Query(value="SELECT count(*) FROM Vehiculo WHERE tipoVehiculo=:tipoVehiculo")
+	@Query(value="SELECT count(*) FROM Vehiculo WHERE tipoVehiculo=:tipoVehiculo AND fechaHoraSalida=null")
 			long contarTipoVehiculo(@Param("tipoVehiculo") TipoVehiculo tipoVehiculo);
 	
 	@Query(value="SELECT v FROM Vehiculo v WHERE v.placa=:placa AND v.fechaHoraSalida=null")

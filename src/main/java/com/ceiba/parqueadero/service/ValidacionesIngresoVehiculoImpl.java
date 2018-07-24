@@ -49,7 +49,7 @@ public class ValidacionesIngresoVehiculoImpl implements IValidacionesIngresoVehi
 		if (vehiculo.tipoVehiculo == TipoVehiculo.CARRO) {
 			return totalVehiculos < ConstantesCuposParqueadero.CUPOS_CARROS;
 		} else {
-			return totalVehiculos < ConstantesCuposParqueadero.CUPOS_MOTOS;
+			return totalVehiculos <= ConstantesCuposParqueadero.CUPOS_MOTOS;
 		}
 
 	}
